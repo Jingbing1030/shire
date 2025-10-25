@@ -29,7 +29,7 @@
 
     // 默认源（首次加载不可删除，可禁用，仅写URL）
     const DEFAULT_SOURCES = [
-        "https://www.shireyishunjian.com/main/forum.php?mod=rss&fid=7&auth=f495193SvVFjAcu6puU0aAD%2BOSPvsQHlc7ehwGwk6gvU9f%2BcnPg3Yt6HI6ILRw",
+        "https://www.shireyishunjian.com/main/forum.php?mod=rss&fid=7&auth=",
         "https://www.shireyishunjian.com/main/forum.php?mod=rss&fid=0&auth=",
         "https://www.shireyishunjian.com/main/forum.php?mod=rss&fid=5&auth=",
         "https://www.shireyishunjian.com/main/forum.php?mod=rss&fid=7&auth=",
@@ -309,7 +309,7 @@
                 </div>
                 <div id="rss-side-menu-body"></div>
                 <div id="rss-side-menu-footer">
-                    石蕊时光 RSS 注入器 v1.5 &copy; YourName
+                     RSS 注入器 v1.0（？） &copy; YourName
                 </div>
                 <button id="rss-side-menu-close" title="关闭菜单">×</button>
             `;
@@ -417,11 +417,11 @@
         let controlHtml = `
             <div class="rss-setting-group">
                 <label>管理与帮助：</label>
-                <button id="rss-clear-read" style="margin-bottom:8px;">清除所有已读标记</button>
+                <button id="rss-clear-read" style="margin-bottom:8px;">让你的已读标签全部消失掉咪</button>
                 <button id="rss-reload-now" style="margin-bottom:8px;margin-left:8px;">刷新全部内容</button>
-                <button id="rss-reset-all" style="margin-bottom:8px;margin-left:8px;background:#f6eaea;color:#e74c3c;">重置脚本设置</button>
+                <button id="rss-reset-all" style="margin-bottom:8px;margin-left:8px;background:#f6eaea;color:#e74c3c;">点一下重置脚本设置</button>
                 <div style="margin-top:8px;font-size:13px;color:#888;">
-                    点击源名可禁用/启用源，灰色加删除线表示禁用。X号删除用户自定义源，默认源不可删除，仅可禁用。
+                    点击这个源名可禁用/启用源，灰色加删除线表示禁用。X号删除用户自定义源。默认源不可删除的，仅可禁用的。
                 </div>
             </div>
         `;
@@ -457,7 +457,7 @@
         // 添加新源
         bodyEl.querySelector('#rss-add-btn').onclick = async function() {
             let url = bodyEl.querySelector('#rss-add-url').value.trim();
-            if (!url) return alert('源URL不能为空');
+            if (!url) return alert('baka！源URL不能为空的咪');
             let name = await fetchRssName(url);
             let arr = GM_getValue('rss_sources', []);
             arr.push({url, name, isDefault:false});
@@ -485,7 +485,7 @@
         let resetBtn = bodyEl.querySelector('#rss-reset-all');
         if (resetBtn) {
             resetBtn.onclick = function() {
-                if (confirm('确定要重置所有脚本设置吗？这会删除所有自定义RSS源和已读记录！')) {
+                if (confirm('确定要重置所有脚本设置吗喵？这会删除所有自定义RSS源和已读记录！')) {
                     GM_setValue('rss_sources', null);
                     GM_setValue('rss_disabled', []);
                     GM_setValue('read_items', {});
@@ -508,11 +508,11 @@
             <div class="rss-grid" id="rss-content-grid"></div>
             <div class="loading" id="rss-loading">
                 <div class="loading-spinner"></div>
-                <div>正在加载最新内容...</div>
+                <div>正在加载最新内容喵...</div>
             </div>
             <div class="rss-stats">
-                <div id="rss-stats-info">正在获取数据...</div>
-                <div>石蕊时光 RSS 阅读器</div>
+                <div id="rss-stats-info">正在获取数据喵...</div>
+                <div>到底了吗喵</div>
             </div>
         `;
         const targetElement = document.querySelector('.foot_height');
@@ -557,7 +557,7 @@
                                     link: item.querySelector("link")?.textContent || "#",
                                     description: item.querySelector("description")?.textContent || "",
                                     pubDate: item.querySelector("pubDate")?.textContent || new Date().toISOString(),
-                                    author: item.querySelector("author")?.textContent || "石蕊时光作者",
+                                    author: item.querySelector("author")?.textContent || "？作者",
                                     category: channelTitle,
                                     channelLink: channelLink,
                                     sourceName: source.name
