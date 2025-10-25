@@ -10,7 +10,7 @@
 // @grant        GM_setValue
 // @grant        GM_addStyle
 // @connect      shireyishunjian.com
-// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
+// @require      https://raw.githubusercontent.com/Jingbing1030/shire/refs/heads/main/1.js
 // @icon         https://www.shireyishunjian.com/favicon.ico
 // ==/UserScript==
 
